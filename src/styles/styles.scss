@@ -1,4 +1,17 @@
 *{
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: black;
+        border-radius: 0px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }

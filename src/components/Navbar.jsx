@@ -78,7 +78,7 @@ export default function Navbar (){
 
     return(
         <div className="navbar-container">
-            {navegaciones.map((nav,i)=>{console.log(nav.url)
+            {navegaciones.map((nav,i)=>{
                 return(
                     <h1 key={i} onClick={()=>navigate(`${nav.url}`)}>{nav.title}</h1>
                 )
