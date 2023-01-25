@@ -32,7 +32,7 @@ export default function Project1(){
             <div className="container">
                 {images.map((img,i)=>{
                     return(
-                        <div className={`panel ${img.title===imgSelect?"active":null}`} style={{backgroundImage:`url(${img.url})`}} onClick={()=>setImgSelect(img.title)}>
+                        <div key={i} className={`panel ${img.title===imgSelect?"active":null}`} style={{backgroundImage:`url(${img.url})`}} onClick={()=>setImgSelect(img.title)}>
                             <h3>{img.title}</h3>
                         </div>
                     )

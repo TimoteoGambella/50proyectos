@@ -13,6 +13,10 @@ export default function Navbar (){
             title:"Project 2",
             url:"/project2"
         },
+        {
+            title:"Project 3",
+            url:"/project3"
+        },
     ]
 
     return(
