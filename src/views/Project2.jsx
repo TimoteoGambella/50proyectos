@@ -2,13 +2,17 @@ import { useState, useEffect } from "react"
 import "../styles/project2/project2.scss"
 import Swal from 'sweetalert2'
 
-export default function Project2(){
+export default function Project2({setDirUrl}){
     const [circle,setCircle]=useState(1)
 
     const clickCircle=(param)=>{
         setCircle(param)
         document.getElementById("progress").style.width = (param-1) / 3 * 100 + '%'
     }
+
+    useEffect(() => {
+        setDirUrl("home")
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if(circle===4){

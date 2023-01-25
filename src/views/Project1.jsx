@@ -1,8 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../styles/project1/project1.scss"
 
-export default function Project1(){
+export default function Project1({setDirUrl}){
     const [imgSelect,setImgSelect]=useState("Explore The World")
+
+    useEffect(() => {
+        setDirUrl("home")
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     const images=[
         {
