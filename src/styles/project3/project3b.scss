@@ -1,4 +1,4 @@
-.project-3-container {
+.project-3b-container {
     background-color: #fafafa;
     transform-origin: top left;
     transition: transform 0.5s linear;
@@ -6,19 +6,19 @@
     min-height: 100vh;
     padding: 50px;
     &.show-nav {
-        transform: rotate(-20deg);
         & + nav li {
             transform: translateX(0);
             transition-delay: 0.3s;
           }
     }
     &.show-nav .circle {
-        transform: rotate(-70deg);
+        transform: rotate(-90deg);
     }
     .circle-container {
         position: fixed;
         top: -100px;
         left: -100px;
+        z-index: 99;
         .circle {
             background-color: #ff7979;
             height: 200px;
@@ -107,4 +107,58 @@ nav {
       }
     }
   }
+}
+
+@keyframes fondo1{
+	0%{
+		background-color: transparent;
+	}
+	100%{
+		background-color: #606060;
+	}
+}
+@keyframes fondo2{
+	0%{
+		background-color: #606060;
+	}
+	100%{
+		background-color: transparent;
+	}
+}
+
+.triangle {
+  transform: rotate(5deg);
+  width: 100vw;
+  height: 100vw;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  position: fixed;
+  top: 0;
+  left: -55vw;
+  background-color: transparent;
+}
+.show-triangle{
+  transform: rotate(5deg);
+  width: 100vw;
+  height: 100vw;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  position: fixed;
+  top: 0;
+  left: -55vw;
+  background-color: #606060;
+  animation-name: fondo1;
+  animation-duration: 1s;
+  animation-iteration-count: initial;
+}
+.hide-triangle {
+  transform: rotate(5deg);
+  width: 100vw;
+  height: 100vw;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  position: fixed;
+  top: 0;
+  left: -55vw;
+  background-color: transparent;
+  animation-name: fondo2;
+  animation-duration: 1s;
+  animation-iteration-count: initial;
 }
