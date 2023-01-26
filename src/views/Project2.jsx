@@ -12,7 +12,8 @@ export default function Project2({setDirUrl}){
 
     useEffect(() => {
         setDirUrl("home")
-        document.getElementById("body").style.overflowY="scroll"
+            document.getElementById("body").style.backgroundColor="white"
+            document.getElementById("body").style.overflowY="scroll"
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {

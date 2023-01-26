@@ -16,14 +16,16 @@ export default function Project3({setDirUrl}){
     useEffect(() => {
         if(state==="open"){
             document.getElementById("body").style.overflowY="hidden"
+            document.getElementById("body").style.backgroundColor="#606060"
         }else{
             document.getElementById("body").style.overflowY="scroll"
+            document.getElementById("body").style.backgroundColor="white"
         }
     }, [state]);
 
     return(
         <>
-            <div className={`container ${state==="close"?null:"show-nav"}`}>
+            <div className={`project-3-container ${state==="close"?null:"show-nav"}`}>
                 <div className="circle-container">
                     <div className="circle">
                         <button id="close">
