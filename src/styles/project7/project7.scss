@@ -5,7 +5,7 @@
     --right-btn-hover-color: rgba(28, 122, 28, 1);
     --hover-width: 75%;
     --other-width: 25%;
-    --speed: 1000ms;
+    --speed: 1500ms;
 }
 
 .project7-container{
@@ -19,7 +19,7 @@
         white-space: nowrap;
         transition: 1000ms;
         &.secondTitle{
-            transition: 1000ms;
+            transition: 1500ms;
             font-size: 3rem;
         }
     }
