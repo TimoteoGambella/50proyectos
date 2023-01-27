@@ -26,7 +26,7 @@ export default function Project5({setDirUrl}){
             document.getElementById("bg").style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`
         }
 
-        let int = setInterval(blurring,30)
+        let int = setInterval(blurring,50)
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     const scale = (num, in_min, in_max, out_min, out_max) => {
