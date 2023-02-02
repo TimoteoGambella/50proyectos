@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
 import Project1 from "./views/Project1";
+import Project10 from "./views/Project10";
 import Project2 from "./views/Project2";
 import Project3 from "./views/Project3";
 import Project3b from "./views/Project3b";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/project7" element={<Project7 setDirUrl={setDirUrl}/>} />
           <Route path="/project8" element={<Project8 setDirUrl={setDirUrl}/>} />
           <Route path="/project9" element={<Project9 setDirUrl={setDirUrl}/>} />
+          <Route path="/project10" element={<Project10 setDirUrl={setDirUrl}/>} />
         </Routes>
       </Router>
     </>
