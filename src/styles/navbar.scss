@@ -3,6 +3,8 @@
     width: 100%;
     display: flex;
     overflow-x: scroll;
+    user-select: none;
+
     &::-webkit-scrollbar {
         height: 10px;
     }
