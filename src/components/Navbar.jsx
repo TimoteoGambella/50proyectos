@@ -89,6 +89,10 @@ export default function Navbar (){
             title:"Project 19",
             url:"/project19"
         },
+        {
+            title:"Project 20",
+            url:"/project20"
+        },
     ]
 
     return(
