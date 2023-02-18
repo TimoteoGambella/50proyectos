@@ -11,6 +11,10 @@ export default function Project3({setDirUrl}){
         Swal.fire({
             title: 'ONLY DESKTOP',
         })
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {

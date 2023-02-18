@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #000;
-    --secondary-color: #fff;
+    --primary-color-19: #000;
+    --secondary-color-19: #fff;
 }
 
 html {
@@ -8,13 +8,13 @@ html {
 }
 
 html.dark {
-    --primary-color: #fff;
-    --secondary-color: #333;
+    --primary-color-19: #fff;
+    --secondary-color-19: #333;
 }
 
 html.dark {
     background-color: #111;
-    color: var(--primary-color);
+    color: var(--primary-color-19);
 }
   
 .project19-container {
@@ -28,8 +28,8 @@ html.dark {
     
     .toggle {
       cursor: pointer;
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
+      background-color: var(--primary-color-19);
+      color: var(--secondary-color-19);
       border: 0;
       border-radius: 4px;
       padding: 8px 12px;
@@ -55,7 +55,7 @@ html.dark {
     }
     
     .needle {
-      background-color: var(--primary-color);
+      background-color: var(--primary-color-19);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -93,7 +93,7 @@ html.dark {
     
     .center-point::after {
       content: '';
-      background-color: var(--primary-color);
+      background-color: var(--primary-color-19);
       width: 5px;
       height: 5px;
       position: absolute;
@@ -115,7 +115,7 @@ html.dark {
     }
     
     .date .circle {
-      background-color: var(--primary-color);
+      background-color: var(--primary-color-19);
       color: var(--secondary-color);
       border-radius: 50%;
       height: 18px;

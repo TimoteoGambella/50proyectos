@@ -9,7 +9,11 @@ export default function Project15({setDirUrl}){
         document.getElementById("body").style.backgroundColor="white"
         document.getElementById("body").style.background="none"
         document.getElementById("body").style.overflowY="scroll"
-
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
+        
         const counters = document.querySelectorAll('.counter')
     
         counters.forEach(counter => {

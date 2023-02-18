@@ -6,8 +6,12 @@ export default function Project4({setDirUrl}){
 
     useEffect(() => {
         setDirUrl("home")
-            document.getElementById("body").style.background="linear-gradient(90deg, #b4add1, #7d5fff, #7158e2)"
-            document.getElementById("body").style.overflowY="scroll"
+        document.getElementById("body").style.background="linear-gradient(90deg, #b4add1, #7d5fff, #7158e2)"
+        document.getElementById("body").style.overflowY="scroll"
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     return(
