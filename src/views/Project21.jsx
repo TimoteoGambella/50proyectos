@@ -34,31 +34,41 @@ export default function Project21({setDirUrl}){
     
     function dragEnter(e) {
         e.preventDefault()
-        this.className += ' hovered'
+        if(e.target.className.indexOf("fill")){
+            e.target.className += ' hovered'
+        }
     }
+
     function dragOver(e) {
         e.preventDefault()
     }
     
-    
     function dragLeave(e) {
-        this.className = 'empty'
+        if(e.target.className.indexOf("fill")){
+            e.target.className = 'empty'
+        }
     }
     
     function dragDrop(e) {
-        this.className = 'empty'
-        this.append(fill)
+        if(e.target.className.indexOf("fill")){
+            e.target.className = 'empty'
+            e.target.append(fill)
+        }
     }
+
+    const array = [1,2,3,4,5,6]
 
     return(
         <div className="project21-container">
-            <div className="empty">
-                <div className="fill" draggable="true"></div>
-            </div>
-            <div className="empty"></div>
-            <div className="empty"></div>
-            <div className="empty"></div>
-            <div className="empty"></div>
+            {array.map((obj)=>{
+                return(
+                    <div className="empty" key={obj}>
+                        {obj===1&&
+                            <div className="fill" draggable="true"></div>
+                        }
+                    </div>
+                )
+            })}
         </div>
     )
 }
