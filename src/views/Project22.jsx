@@ -48,17 +48,17 @@ export default function Project22({setDirUrl}){
         ctx.stroke()
     }
 
-    function updateSizeOnScreen() {
-        document.getElementById('size').innerText = size
+    function updateSizeOnScreen(sz) {
+        document.getElementById('size').innerText = sz
     }
-    
+
     return(
         <div className="project22-container">
             <canvas id="canvas" width="800" height="500"
                 onMouseDown={(e)=>{
                     setPress(true)
-                    setX(e.target.clientX)
-                    setY(e.target.clientY)
+                    setX(e.clientX-e.target.offsetLeft)
+                    setY(e.clientY-e.target.offsetTop)
                 }}
                 onMouseUp={()=>{
                     setPress(false)
@@ -66,9 +66,10 @@ export default function Project22({setDirUrl}){
                     setY("")
                 }}
                 onMouseMove={(e)=>{
+                    console.log(e)
                     if(press) {
-                        const x2 = e.target.clientX
-                        const y2 = e.target.clientY
+                        let x2 = e.clientX-e.target.offsetLeft
+                        let y2 = e.clientY-e.target.offsetTop
             
                         drawCircle(x2, y2)
                         drawLine(x, y, x2, y2)
@@ -79,24 +80,29 @@ export default function Project22({setDirUrl}){
                 }}
             ></canvas>
             <div className="toolbox">
-                <button id="decrease" onClick={()=>{
-                    setSize(size-5)
+                <button id="decrease" onClick={async()=>{
+                    let sz = size-5
+                    setSize(sz)
 
-                    if(size < 5) {
+                    if(size === 5) {
                         setSize(5)
+                        sz=5
                     }
             
-                    updateSizeOnScreen()
+                    updateSizeOnScreen(sz)
                 }}>-</button>
                 <span id="size">10</span>
-                <button id="increase" onClick={()=>{
-                    setSize(size+5)
-                    if(size > 50) {
+                <button id="increase" onClick={async()=>{
+                    let sz = size+5
+
+                    setSize(sz)
+                    if(size === 50) {
                         setSize(50)
+                        sz=50
                     }
-                    updateSizeOnScreen()
+                    updateSizeOnScreen(sz)
                 }}>+</button>
-                <input type="color" id="color" onClick={(e)=>setColor(e.target.value)}/>
+                <input type="color" id="color" onChangeCapture={(e)=>setColor(e.target.value)}/>
                 <button id="clear" onClick={()=>document.getElementById('canvas').getContext('2d').clearRect(0,0, 800, 500)}>X</button>
             </div>
         </div>
