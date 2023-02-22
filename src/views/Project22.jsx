@@ -3,12 +3,14 @@ import "../styles/project22/project22.scss"
 
 export default function Project22({setDirUrl}){
 
+    const [ctx,setCtx]=useState({})
+
     const [press,setPress]=useState(false)
     const [x,setX]=useState("")
     const [y,setY]=useState("")
 
     const [size,setSize]=useState(10)
-
+    const [color,setColor]=useState("black")
 
     useEffect(() => {
 
@@ -21,17 +23,14 @@ export default function Project22({setDirUrl}){
             html.classList.remove('dark')
         }
 
+
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
-    const canvas = document.getElementById('canvas');
-    const sizeEL = document.getElementById('size');
-    const colorEl = document.getElementById('color');
-    const clearEl = document.getElementById('clear');
-
-    const ctx = canvas.getContext('2d');
-
-    colorEl.value = 'black'
-    let color = colorEl.value
+    useEffect(() => {
+        if(ctx.canvas===undefined){
+            setCtx(document.getElementById('canvas').getContext('2d'))
+        }
+    }, [ctx]);
 
     function drawCircle(x, y) {
         ctx.beginPath();
@@ -50,20 +49,16 @@ export default function Project22({setDirUrl}){
     }
 
     function updateSizeOnScreen() {
-        sizeEL.innerText = size
+        document.getElementById('size').innerText = size
     }
-
-    colorEl.addEventListener('change', (e) => color = e.target.value)
-
-    clearEl.addEventListener('click', () => ctx.clearRect(0,0, canvas.width, canvas.height))
     
     return(
         <div className="project22-container">
             <canvas id="canvas" width="800" height="500"
                 onMouseDown={(e)=>{
                     setPress(true)
-                    setX(e.offsetX)
-                    setY(e.offsetY)
+                    setX(e.target.clientX)
+                    setY(e.target.clientY)
                 }}
                 onMouseUp={()=>{
                     setPress(false)
@@ -72,8 +67,8 @@ export default function Project22({setDirUrl}){
                 }}
                 onMouseMove={(e)=>{
                     if(press) {
-                        const x2 = e.offsetX
-                        const y2 = e.offsetY
+                        const x2 = e.target.clientX
+                        const y2 = e.target.clientY
             
                         drawCircle(x2, y2)
                         drawLine(x, y, x2, y2)
@@ -101,8 +96,8 @@ export default function Project22({setDirUrl}){
                     }
                     updateSizeOnScreen()
                 }}>+</button>
-                <input type="color" id="color" />
-                <button id="clear">X</button>
+                <input type="color" id="color" onClick={(e)=>setColor(e.target.value)}/>
+                <button id="clear" onClick={()=>document.getElementById('canvas').getContext('2d').clearRect(0,0, 800, 500)}>X</button>
             </div>
         </div>
     )
