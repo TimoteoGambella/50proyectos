@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react"
+import { reloadStyles } from "../helper/reload";
 import "../styles/project4/project4.scss"
 
 export default function Project4({setDirUrl}){
     const [active,setActive]=useState(false)
 
     useEffect(() => {
-        setDirUrl("home")
-        document.getElementById("body").style.background="linear-gradient(90deg, #b4add1, #7d5fff, #7158e2)"
-        document.getElementById("body").style.overflowY="scroll"
-        const html = document.querySelector('html')
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark')
-        }
+        reloadStyles(setDirUrl)
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     return(

@@ -6,6 +6,7 @@ import aud3 from "../assets/sound-board_sounds_gasp.mp3"
 import aud4 from "../assets/sound-board_sounds_tada.mp3"
 import aud5 from "../assets/sound-board_sounds_victory.mp3"
 import aud6 from "../assets/sound-board_sounds_wrong.mp3"
+import { reloadStyles } from "../helper/reload"
 
 export default function Project9({setDirUrl}){
 
@@ -38,14 +39,7 @@ export default function Project9({setDirUrl}){
 
     useEffect(() => {
         
-        setDirUrl("home")
-        document.getElementById("body").style.backgroundColor="white"
-        document.getElementById("body").style.background="none"
-        document.getElementById("body").style.overflowY="scroll"
-        const html = document.querySelector('html')
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark')
-        }
+        reloadStyles(setDirUrl)
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     function stopSongs() {

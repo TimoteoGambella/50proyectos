@@ -2,10 +2,11 @@ import { useEffect, useState } from "react"
 import { reloadStyles } from "../helper/reload";
 import "../styles/project24/project24.scss"
 
-export default function Project24({setDirUrl}){
+export default function Project25({setDirUrl}){
     const [charge,setCharge]=useState(false)
 
     useEffect(() => {
+
         reloadStyles(setDirUrl)
 
         setTimeout(() => {
