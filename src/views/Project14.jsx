@@ -1,12 +1,18 @@
 import { useEffect } from "react"
-import { reloadStyles } from "../helper/reload";
 import "../styles/project14/project14.scss"
 
 export default function Project14({setDirUrl}){
 
     useEffect(() => {
 
-        reloadStyles(setDirUrl)
+        setDirUrl("home")
+        document.getElementById("body").style.backgroundColor="white"
+        document.getElementById("body").style.background="none"
+        document.getElementById("body").style.overflowY="scroll"
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
         
         const toggle = document.getElementById('toggle')
         const nav = document.getElementById('nav')

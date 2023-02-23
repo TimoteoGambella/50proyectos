@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import "../styles/project2/project2.scss"
 import Swal from 'sweetalert2'
-import { reloadStyles } from "../helper/reload"
 
 export default function Project2({setDirUrl}){
     const [circle,setCircle]=useState(1)
@@ -12,7 +11,14 @@ export default function Project2({setDirUrl}){
     }
 
     useEffect(() => {
-        reloadStyles(setDirUrl)
+        setDirUrl("home")
+        document.getElementById("body").style.backgroundColor="white"
+        document.getElementById("body").style.background="none"
+        document.getElementById("body").style.overflowY="scroll"
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {

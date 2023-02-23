@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react"
-import { reloadStyles } from "../helper/reload";
 import "../styles/project1/project1.scss"
 
 export default function Project1({setDirUrl}){
     const [imgSelect,setImgSelect]=useState("Explore The World")
 
     useEffect(() => {
-        reloadStyles(setDirUrl)
+        setDirUrl("home")
+        document.getElementById("body").style.backgroundColor="white"
+        document.getElementById("body").style.background="none"
+        document.getElementById("body").style.overflowY="scroll"
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     const images=[

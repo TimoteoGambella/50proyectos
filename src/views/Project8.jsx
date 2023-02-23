@@ -1,12 +1,18 @@
 import { useEffect } from "react"
-import { reloadStyles } from "../helper/reload";
 import "../styles/project8/project8.scss"
 
 export default function Project8({setDirUrl}){
 
     useEffect(() => {
         
-        reloadStyles(setDirUrl)
+        setDirUrl("home")
+        document.getElementById("body").style.backgroundColor="white"
+        document.getElementById("body").style.background="none"
+        document.getElementById("body").style.overflowY="scroll"
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
         const labels = document.querySelectorAll('.form-control label')
         
         labels.forEach(label => {

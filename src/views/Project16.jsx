@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { reloadStyles } from "../helper/reload"
 import "../styles/project16/project16.scss"
 
 export default function Project16({setDirUrl}){
@@ -11,7 +10,14 @@ export default function Project16({setDirUrl}){
 
     useEffect(() => {
 
-        reloadStyles(setDirUrl)
+        setDirUrl("home")
+        document.getElementById("body").style.backgroundColor="white"
+        document.getElementById("body").style.background="none"
+        document.getElementById("body").style.overflowY="scroll"
+        const html = document.querySelector('html')
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark')
+        }
         
         setSmallCups(document.querySelectorAll('.cup-small'))
         setLiters(document.getElementById('liters'))
