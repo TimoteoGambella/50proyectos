@@ -13,11 +13,6 @@ export default function Project14({setDirUrl}){
         if (html.classList.contains('dark')) {
             html.classList.remove('dark')
         }
-        
-        const toggle = document.getElementById('toggle')
-        const nav = document.getElementById('nav')
-    
-        toggle.addEventListener('click', () => nav.classList.toggle('active'))
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     return(
