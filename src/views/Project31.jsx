@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
 import "../styles/project31/project31.scss"
 
 export default function Project31({setDirUrl}){
@@ -24,14 +23,6 @@ export default function Project31({setDirUrl}){
         }
 
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
-
-    // const lengthEl = document.getElementById('length')
-    // const uppercaseEl = document.getElementById('uppercase')
-    // const lowercaseEl = document.getElementById('lowercase')
-    // const numbersEl = document.getElementById('numbers')
-    // const symbolsEl = document.getElementById('symbols')
-    // const generateEl = document.getElementById('generate')
-
 
     function generatePassword(lower, upper, number, symbol, length) {
         let generatedPassword = ''
