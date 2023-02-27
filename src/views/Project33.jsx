@@ -1,7 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import "../styles/project33/project33.scss"
 
 export default function Project33({setDirUrl}){
+
+    const [notes,setNotes]=useState([])
+    const [hidden,setHidden]=useState(null)
 
     useEffect(() => {
 
@@ -14,77 +17,65 @@ export default function Project33({setDirUrl}){
             html.classList.remove('dark')
         }
 
+        setNotes(JSON.parse(localStorage.getItem('notes')))
+
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
     
-    const addBtn = document.getElementById('add')
-
-    const notes = JSON.parse(localStorage.getItem('notes'))
-    
-    if(notes) {
-        notes.forEach(note => addNewNote(note))
-    }
-    
-    addBtn.addEventListener('click', () => addNewNote())
-    
     function addNewNote(text = '') {
-        const note = document.createElement('div')
-        note.classList.add('note')
+        setNotes([...notes,text])
     
-        note.innerHTML = `
-        <div class="tools">
-            <button class="edit"><i class="fas fa-edit"></i></button>
-            <button class="delete"><i class="fas fa-trash-alt"></i></button>
-        </div>
-        <div class="main ${text ? "" : "hidden"}"></div>
-        <textarea class="${text ? "hidden" : ""}"></textarea>
-        `
+        // editBtn.addEventListener('click', () => {
+            // main.classList.toggle('hidden')
+            // textArea.classList.toggle('hidden')
+        // })
     
-        const editBtn = note.querySelector('.edit')
-        const deleteBtn = note.querySelector('.delete')
-        const main = note.querySelector('.main')
-        const textArea = note.querySelector('textarea')
+        // textArea.addEventListener('input', (e) => {
+        //     const { value } = e.target
     
-        textArea.value = text
-        // main.innerHTML = marked(text)
+        //     main.innerHTML = value
     
-        deleteBtn.addEventListener('click', () => {
-            note.remove()
+        //     updateLS()
+        // })
     
-            updateLS()
-        })
-    
-        editBtn.addEventListener('click', () => {
-            main.classList.toggle('hidden')
-            textArea.classList.toggle('hidden')
-        })
-    
-        textArea.addEventListener('input', (e) => {
-            const { value } = e.target
-    
-            // main.innerHTML = marked(value)
-    
-            updateLS()
-        })
-    
-        document.body.appendChild(note)
+        // document.getElementById("project33").appendChild(note)
     }
     
-    function updateLS() {
-        const notesText = document.querySelectorAll('textarea')
-    
-        const notes = []
-    
-        notesText.forEach(note => notes.push(note.value))
-    
-        localStorage.setItem('notes', JSON.stringify(notes))
+    function updateLS(newArray) {
+        localStorage.setItem('notes', JSON.stringify(newArray))
     }
 
     return(
-        <div className="project33-container">
-            <button className="add" id="add">
+        <div className="project33-container" id="project33">
+            <button className="add" id="add" onClick={()=>addNewNote()}>
                 <i className="fas fa-plus"></i> Add note
             </button>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.2/marked.min.js"></script>
+            {notes.length!==0 && notes.map((obj,i)=>{
+                return(
+                    <div key={i} className="note" id={i}>
+                        <div className="tools ">
+                            <button className="edit" onClick={()=>{
+                                if(hidden===i){
+                                    setHidden(null)
+                                }else{
+                                    setHidden(i)
+                                }
+                            }}><i className="fas fa-edit"></i></button>
+                            <button className="delete" onClick={()=>{
+                                let newArray=[]
+                                for (let key in notes) {
+                                    if (Number(key)!==Number(i)) {
+                                        newArray.push(notes[key])
+                                    }
+                                }
+                                setNotes(newArray)
+                                updateLS(newArray)
+                            }}><i className="fas fa-trash-alt"></i></button>
+                        </div>
+                        <div className={`main ${obj && hidden===i ? "hidden" : ""}`}>{obj}</div>
+                        <textarea className={`${obj && hidden===i ? "" : "hidden"}`} >{obj}</textarea>
+                    </div>
+                )
+            })}
         </div>
     )
 }
