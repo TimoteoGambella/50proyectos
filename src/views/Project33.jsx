@@ -17,12 +17,16 @@ export default function Project33({setDirUrl}){
             html.classList.remove('dark')
         }
 
-        setNotes(JSON.parse(localStorage.getItem('notes')))
+        if(JSON.parse(localStorage.getItem('notes'))!==null){
+            setNotes(JSON.parse(localStorage.getItem('notes')))
+        }
 
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
     
-    function addNewNote(text = '') {
-        setNotes([...notes,text])
+    async function addNewNote(text = '') {
+        await setNotes([...notes,text])
+        
+        document.getElementById(`textarea${notes.length}`).focus()
     
         // editBtn.addEventListener('click', () => {
             // main.classList.toggle('hidden')
@@ -46,7 +50,9 @@ export default function Project33({setDirUrl}){
 
     return(
         <div className="project33-container" id="project33">
-            <button className="add" id="add" onClick={()=>addNewNote()}>
+            <button className="add" id="add" onClick={()=>{
+                addNewNote()
+            }}>
                 <i className="fas fa-plus"></i> Add note
             </button>
             {notes.length!==0 && notes.map((obj,i)=>{
@@ -71,8 +77,13 @@ export default function Project33({setDirUrl}){
                                 updateLS(newArray)
                             }}><i className="fas fa-trash-alt"></i></button>
                         </div>
-                        <div className={`main ${obj && hidden===i ? "hidden" : ""}`}>{obj}</div>
-                        <textarea className={`${obj && hidden===i ? "" : "hidden"}`} >{obj}</textarea>
+                        <div className={`main ${obj && hidden===i ? "" : "hidden"}`}>{obj}</div>
+                        <textarea className={`${obj && hidden===i ? "hidden" : ""}`} id={`textarea${i}`} defaultValue={obj} onChange={(e)=>{
+                            let newArray=notes
+                            newArray[i]=e.target.value
+                            setNotes(newArray)
+                            updateLS(newArray)
+                        }}/>
                     </div>
                 )
             })}
