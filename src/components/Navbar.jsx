@@ -141,6 +141,10 @@ export default function Navbar (){
             title:"Project 32",
             url:"/project32"
         },
+        {
+            title:"Project 33",
+            url:"/project33"
+        },
     ]
 
     return(
