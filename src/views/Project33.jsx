@@ -25,26 +25,14 @@ export default function Project33({setDirUrl}){
     
     async function addNewNote(text = '') {
         await setNotes([...notes,text])
-        
         document.getElementById(`textarea${notes.length}`).focus()
-    
-        // editBtn.addEventListener('click', () => {
-            // main.classList.toggle('hidden')
-            // textArea.classList.toggle('hidden')
-        // })
-    
-        // textArea.addEventListener('input', (e) => {
-        //     const { value } = e.target
-    
-        //     main.innerHTML = value
-    
-        //     updateLS()
-        // })
-    
-        // document.getElementById("project33").appendChild(note)
     }
     
-    function updateLS(newArray) {
+    async function updateLS(newArray,param) {
+        if(param){
+            await setNotes([])
+        }
+        setNotes(newArray)
         localStorage.setItem('notes', JSON.stringify(newArray))
     }
 
@@ -66,23 +54,21 @@ export default function Project33({setDirUrl}){
                                     setHidden(i)
                                 }
                             }}><i className="fas fa-edit"></i></button>
-                            <button className="delete" onClick={()=>{
+                            <button className="delete" onClick={async()=>{
                                 let newArray=[]
                                 for (let key in notes) {
                                     if (Number(key)!==Number(i)) {
                                         newArray.push(notes[key])
                                     }
                                 }
-                                setNotes(newArray)
-                                updateLS(newArray)
+                                updateLS(newArray,true)
                             }}><i className="fas fa-trash-alt"></i></button>
                         </div>
                         <div className={`main ${obj && hidden===i ? "" : "hidden"}`}>{obj}</div>
                         <textarea className={`${obj && hidden===i ? "hidden" : ""}`} id={`textarea${i}`} defaultValue={obj} onChange={(e)=>{
                             let newArray=notes
                             newArray[i]=e.target.value
-                            setNotes(newArray)
-                            updateLS(newArray)
+                            updateLS(newArray,false)
                         }}/>
                     </div>
                 )
