@@ -20,30 +20,24 @@ export default function Project34({setDirUrl}){
             html.classList.remove('dark')
         }
 
-        runAnimation()
+        runAnimation(number)
 
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
     
-    function resetDOM() {
-        const nums = document.querySelectorAll('.nums span')
-
-        setCounter(false)
-        setFinalMsj(false)
-
-        nums.forEach((num) => {
-            num.classList.value = ''
-        })
-
-        nums[0].classList.add('in')
+    async function resetDOM() {
+        await setNumber(0)
+        await setCounter(false)
+        await setFinalMsj(false)
+        runAnimation(0)
     }
     
-    function runAnimation() {
+    function runAnimation(num) {
         setTimeout(async() => {
-            setNumber(number+1)
+            setNumber(num+1)
             setTimeout(() => {
-                setNumber(number+2)
+                setNumber(num+2)
                 setTimeout(() => {
-                    setNumber(number+3)
+                    setNumber(num+3)
                     setTimeout(() => {
                             setCounter(true)
                             setFinalMsj(true)
@@ -71,7 +65,6 @@ export default function Project34({setDirUrl}){
                 <button id="replay">
                     <span onClick={()=>{
                         resetDOM()
-                        runAnimation()
                     }}>Replay</span>
                 </button>
             </div>
