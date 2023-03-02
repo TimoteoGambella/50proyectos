@@ -7,7 +7,7 @@ export default function Project40({setDirUrl}){
 
     useEffect(() => {
 
-        setDirUrl("home")
+        setDirUrl("project40")
         document.getElementById("body").style.backgroundColor="white"
         document.getElementById("body").style.background="none"
         document.getElementById("body").style.overflowY="scroll"
@@ -21,12 +21,14 @@ export default function Project40({setDirUrl}){
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     function createBoxes() {
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < 4; j++) {
-                const box = document.createElement('div')
-                box.classList.add('box')
-                box.style.backgroundPosition = `${-j * 125}px ${-i * 125}px`
-                document.getElementById('boxes').appendChild(box)
+        if(!document.querySelector('.box')){
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 4; j++) {
+                    const box = document.createElement('div')
+                    box.classList.add('box')
+                    box.style.backgroundPosition = `${-j * 125}px ${-i * 125}px`
+                    document.getElementById('boxes').appendChild(box)
+                }
             }
         }
     }
@@ -36,6 +38,7 @@ export default function Project40({setDirUrl}){
         <div className="project40-container">
             <button id="btn" className="magic" onClick={()=>{setMagic(!magic);document.getElementById("boxes").classList.toggle('big')}}>Magic 🎩</button>
             <div id="boxes" className="boxes big" style={{gap:!magic?"25px":"0px"}}></div>
+            <h1 onClick={()=>window.history.back()}>RETURN</h1>
         </div>
     )
 }

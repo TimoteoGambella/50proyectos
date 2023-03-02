@@ -51,7 +51,7 @@ function App() {
   return (
     <>
       <Router>
-        {dirUrl!=="project3"&&<Navbar/>}
+        {dirUrl==="home"&&<Navbar/>}
         <Routes>
           <Route path="/" element={<Home setDirUrl={setDirUrl}/>} />
           <Route path="/project1" element={<Project1 setDirUrl={setDirUrl}/>} />
