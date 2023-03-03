@@ -80,7 +80,7 @@ export default function Project47({setDirUrl}){
                 setNumberTest(numberTest+1)
             }
         }, 5000);
-    }, [numberTest]);
+    }, [numberTest]);// eslint-disable-line react-hooks/exhaustive-deps
       
     return(
         <div className="project47-container">
