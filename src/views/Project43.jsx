@@ -19,29 +19,6 @@ export default function Project43({setDirUrl}){
 
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
-    // ratingsContainer.addEventListener('click', (e) => {
-    //     if(e.target.parentNode.classList.contains('rating') && e.target.nextElementSibling) {
-    //         removeActive()
-    //         e.target.parentNode.classList.add('active')
-    //         selectedRating = e.target.nextElementSibling.innerHTML
-    //     } else if(
-    //         e.target.parentNode.classList.contains('rating') &&
-    //         e.target.previousSibling &&
-    //         e.target.previousElementSibling.nodeName === 'IMG'
-    //     ) {
-    //         removeActive()
-    //         e.target.parentNode.classList.add('active')
-    //         selectedRating = e.target.innerHTML
-    //     }
-    // })
-
-    // sendBtn.addEventListener('click', (e) => {
-    //     panel.innerHTML = `
-
-    //     `
-    // })
-
-
     return(
         <div className="project43-container">
             {!send ? 
