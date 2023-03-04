@@ -16,3 +16,20 @@ body{
         background: transparent;
     }
 }
+.home{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: 58px;
+    }
+    h2{
+        font-size: 25px;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
