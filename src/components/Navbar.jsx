@@ -203,7 +203,7 @@ export default function Navbar (){
         <div className="navbar-container">
             {navegaciones.map((nav,i)=>{
                 return(
-                    <h1 key={i} onClick={()=>navigate(`${nav.url}`)}>{nav.title}</h1>
+                    <h1 key={i} onClick={()=>navigate(`${nav.url}`)} className={`${window.location.pathname===nav.url?"active":""}`}>{nav.title}</h1>
                 )
             })}
         </div>
