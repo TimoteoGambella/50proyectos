@@ -44,8 +44,12 @@ import Project43 from "./views/Project43";
 import Project44 from "./views/Project44";
 import Project45 from "./views/Project45";
 import Project46 from "./views/Project46";
+import Project47 from "./views/Project47";
+import Project48 from "./views/Project48";
+import Project49 from "./views/Project49";
 import Project4b from "./views/Project4b";
 import Project5 from "./views/Project5";
+import Project50 from "./views/Project50";
 import Project6 from "./views/Project6";
 import Project7 from "./views/Project7";
 import Project8 from "./views/Project8";
@@ -108,6 +112,10 @@ function App() {
           <Route path="/project44" element={<Project44 setDirUrl={setDirUrl}/>} />
           <Route path="/project45" element={<Project45 setDirUrl={setDirUrl}/>} />
           <Route path="/project46" element={<Project46 setDirUrl={setDirUrl}/>} />
+          <Route path="/project47" element={<Project47 setDirUrl={setDirUrl}/>} />
+          <Route path="/project48" element={<Project48 setDirUrl={setDirUrl}/>} />
+          <Route path="/project49" element={<Project49 setDirUrl={setDirUrl}/>} />
+          <Route path="/project50" element={<Project50 setDirUrl={setDirUrl}/>} />
         </Routes>
       </Router>
     </>
