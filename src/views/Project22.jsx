@@ -66,7 +66,6 @@ export default function Project22({setDirUrl}){
                     setY("")
                 }}
                 onMouseMove={(e)=>{
-                    console.log(e)
                     if(press) {
                         let x2 = e.clientX-e.target.offsetLeft
                         let y2 = e.clientY-e.target.offsetTop

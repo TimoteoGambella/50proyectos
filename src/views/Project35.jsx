@@ -36,7 +36,6 @@ export default function Project35({setDirUrl}){
         document.getElementById(idx).style.transform = `translateX(${-idx * 500}px)`
         
         setTimeout(async() => {
-            console.log(idx)
             if(idx===arrayImgs.length-1){
                 setImgNow(0)
                 changeImage(0)

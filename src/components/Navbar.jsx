@@ -1,8 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/navbar.scss"
+import { useEffect } from "react";
 
 export default function Navbar (){
     const navigate = useNavigate();
+
+    useEffect(() => {
+        scroll()
+    }, [])
+    
+    const scroll=()=>{        
+        document.getElementById(window.location.pathname.slice(1)).scrollIntoView({
+            inline:"start",
+            behavior:"smooth"
+        })
+    }
 
     const navegaciones = [
         {
@@ -216,10 +228,13 @@ export default function Navbar (){
     ]
 
     return(
-        <div className="navbar-container">
+        <div className="navbar-container" id="nav">
             {navegaciones.map((nav,i)=>{
                 return(
-                    <h1 key={i} onClick={()=>navigate(`${nav.url}`)} className={`${window.location.pathname===nav.url?"active":""}`}>{nav.title}</h1>
+                    <h1 key={i} id={"project"+(i+1)} onClick={()=>{
+                        navigate(`${nav.url}`)
+                        scroll()
+                    }} className={`${window.location.pathname===nav.url?"active":""}`}>{nav.title}</h1>
                 )
             })}
         </div>

@@ -28,8 +28,6 @@ export default function Project16({setDirUrl}){
     const array8 = [1,2,3,4,5,6,7,8]
 
     const highlightCups = (idx) => {
-        console.log(smallCups[idx])
-        console.log(idx)
         if (idx===7 && smallCups[idx].classList.contains("full")) idx--
         else if(smallCups[idx].classList.contains('full') && !smallCups[idx].nextElementSibling.classList.contains('full')) {
             idx--

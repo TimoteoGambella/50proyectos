@@ -69,10 +69,6 @@ export default function Project31({setDirUrl}){
         return symbols[Math.floor(Math.random() * symbols.length)]
     }
 
-    useEffect(() => {
-    console.log(array)
-    }, [array])
-
     return(
         <div className="project31-container">
             <div className="container">
