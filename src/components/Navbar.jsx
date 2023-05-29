@@ -6,7 +6,9 @@ export default function Navbar (){
     const navigate = useNavigate();
 
     useEffect(() => {
-        scroll()
+        if(window.location.pathname!=="/"){
+            scroll()
+        }
     }, [])
     
     const scroll=()=>{        
