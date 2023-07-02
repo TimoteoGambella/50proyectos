@@ -64,7 +64,7 @@ function App() {
 
   const ftch=async()=>{
     
-    await fetch("http://localhost:3000/api/login",{
+    await fetch("https://prueba-app.vercel.app/api/login",{
         method:"POST",
         body: JSON.stringify({
           username:"lucas1",
@@ -78,7 +78,7 @@ function App() {
     .then((res)=>res.json()
       .then(async (res)=>{
         console.log(res)
-        await fetch("http://localhost:3000/api/partidos",{
+        await fetch("https://prueba-app.vercel.app/api/partidos",{
         method:"GET",
         headers: {
           "Content-Type":"application/json",
