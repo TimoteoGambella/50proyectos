@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
@@ -57,6 +57,38 @@ import Project9 from "./views/Project9";
 
 function App() {
   const [dirUrl,setDirUrl]=useState("home")
+
+  useEffect(() => {
+    ftch()
+  }, []);
+
+  const ftch=async()=>{
+    
+    await fetch("http://localhost:3000/api/login",{
+        method:"POST",
+        body: JSON.stringify({
+          username:"lucas1",
+          password:"Password123"
+        }),
+        headers: {
+          "Content-Type":"application/json"
+        }
+      }
+    )
+    .then((res)=>res.json()
+      .then(async (res)=>{
+        console.log(res)
+        await fetch("http://localhost:3000/api/partidos",{
+        method:"GET",
+        headers: {
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${res.token}`
+        }
+      }).then((res)=>res.json()
+        .then((res)=>console.log(res)))
+    
+    }))
+  }
 
   return (
     <>
